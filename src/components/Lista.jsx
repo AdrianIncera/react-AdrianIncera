@@ -12,6 +12,7 @@ export function Lista(props) {
         <ComponenteLista texto="Elemento 1" />
         <ComponenteLista texto="Elemento 2" />
         <ComponenteLista texto="Elemento 3" />
+
         {listaComponentes}
       </ul>
     </div>
