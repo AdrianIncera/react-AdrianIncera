@@ -9,8 +9,6 @@ export function App() {
     <div>
       <h1>Hola (desde componente)</h1>
       <Lista titulo="Componente 1" icono=":(" elementos={elementos1} />
-      <Lista titulo="Componente 2" icono=":*" />
-      <Lista titulo="Componente 3" icono=";)" />
     </div>
   );
 }
