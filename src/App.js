@@ -20,7 +20,13 @@ export function App() {
       <h1>Listas de tareas</h1>
       <Lista titulo="Tareas de la casa" icono="♥" elementos={elementos1} />
       <Lista titulo="Lista de la compra" icono="✌" elementos={elementos2} />
-      <Lista titulo="ToDos del curso" icono="🙌" elementos={elementos3} />
+      <ListaClase titulo="ToDos del curso" icono="🙌" elementos={elementos3} />
     </div>
   );
 }
+
+
+/* JAVA */
+
+//ArrayList<String> blabla = new ArrayList<>();
+//ArrayList<String> blabla2 = new LinkedList<>();
