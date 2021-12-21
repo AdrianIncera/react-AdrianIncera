@@ -1,19 +1,52 @@
-import React from 'react';
-import ComponenteLista from './ComponenteLista';
+import React, { useState, useRef } from 'react';
+import ComponenteListaClase from './ComponenteListaClase';
 export function Lista(props) {
-  const listaComponentes = [];
-  for (let i = 0; i < props.elementos.length; i++) {
-    listaComponentes.push(<ComponenteLista texto="hola" />);
+  const listaInicial = [];
+  if (props.elementos !== undefined) {
+    for (let i = 0; i < props.elementos.length; i++) {
+      listaInicial.push(
+        <ComponenteListaClase
+          done={props.elementos[i].done}
+          texto={props.elementos[i].texto}
+          prioridad={props.elementos[i].prioridad}
+        />
+      );
+    }
   }
+
+  const [listaComponentes, setListaComponentes] = useState(listaInicial);
+  const valorTextInput = useRef('');
+  const valorPrioritySelect = useRef('');
+
+  const funcion = function addElement() {
+    const newLista = listaComponentes.concat(
+      <ComponenteListaClase
+        texto={valorTextInput.current.value}
+        prioridad={valorPrioritySelect.current.value}
+      />
+    );
+    setListaComponentes(newLista);
+  };
+
   return (
     <div>
       {props.titulo} - {props.icono}
       <ul>
-        <ComponenteLista texto="Elemento 1" />
-        <ComponenteLista texto="Elemento 2" />
-        <ComponenteLista texto="Elemento 3" />
-
         {listaComponentes}
+        <li>
+          <input
+            ref={valorTextInput}
+            type="text"
+            placeholder="Introduce una tarea"
+          />
+          <br />
+          <select ref={valorPrioritySelect}>
+            <option value="alta">Prioridad Alta</option>
+            <option value="media">Prioridad Media</option>
+            <option value="baja">Prioridad Baja</option>
+          </select>
+          <button onClick={funcion}>Añadir</button>
+        </li>
       </ul>
     </div>
   );

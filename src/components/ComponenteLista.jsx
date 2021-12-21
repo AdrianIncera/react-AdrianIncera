@@ -1,20 +1,32 @@
 import React from 'react';
 
+import './componente-lista.css';
+
 export default function ComponenteLista(props) {
+  let claseLista = '';
+  setElementClass();
+  function setElementClass() {
+    props.prioridad;
+    if (props.done) {
+      claseLista += ' el-done';
+    } else {
+      claseLista += ' el-undone';
+    }
+  }
 
-let claseLista = "";
-
-if(props.done){
-  claseLista = 'el-checked';
-
-}else{
-  claseLista = 'el-uncheked';
-}
+  function setTaskStatus() {
+    props.done = !props.done;
+    setElementClass();
+  }
 
   return (
-    <li classname={claseLista}>
-      <input type="checkbox" />
+    <li className={claseLista}>
+      <input type="checkbox" onChange={setTaskStatus} />
       {props.texto}
     </li>
   );
 }
+
+ComponenteLista.defaultProps = {
+  prioridad: 'baja',
+};
