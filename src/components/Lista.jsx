@@ -27,7 +27,7 @@ export function Lista(props) {
     );
     setListaComponentes(newLista);
   };
-
+  
   return (
     <div>
       {props.titulo} - {props.icono}
