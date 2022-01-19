@@ -18,11 +18,11 @@ export const DatosTablaCubos = [
     Marca: 'Dayan',
 
     imagen:
-      'https://www.mercadoracing.org/imagenes-anuncios/26/419711/mitsubishi-evo-vii-rs.jpg',
+      'https://ae01.alicdn.com/kf/H9ffce9ea57224637a4f7fc65ae6dbfccl.jpg',
     descripción: 'Un coche genial',
   },
   {
-    matricula: '3333 FFF',
-    marca: 'Subaru',
+    Tipo: '3x3',
+    Marca: 'Gan',
   },
 ];

@@ -42,9 +42,9 @@ class Cubos extends React.Component {
                     {DatosTablaCubos[2].marca} {DatosTablaCubos[2].modelo}
                   </Card.Title>
                   <Card.Text>
-                    Matrícula: {DatosTablaCubos[2].matricula}
+                    Cubo: {DatosTablaCubos[1].Marca}
                     <p />
-                    {DatosTablaCubos[2].descripción}
+                    Tipo: {DatosTablaCubos[1].Tipos}
                   </Card.Text>
                 </Card.Body>
               </Card>
