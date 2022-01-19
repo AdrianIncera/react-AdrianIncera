@@ -11,7 +11,7 @@ export const DatosTablaCubos = [
   },
   {
     Tipos: '3x3',
-    Marca: 'Gan 11 M Pro',
+    Marca: 'Gan ',
   },
   {
     Tipos: 'Megaminx',
