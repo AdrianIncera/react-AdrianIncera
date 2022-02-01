@@ -1,4 +1,3 @@
-import { bottom } from '@popperjs/core/lib/enums';
 import React from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 
@@ -7,7 +6,8 @@ class Home extends React.Component {
     super(props);
     this.state = { user: '', password: '' };
     this.login = this.login.bind(this);
-    this.valorTextInput = React.createRef();
+    this.inputUser = React.createRef();
+    this.inputPassword = React.createRef();
   }
 
   login() {
@@ -15,9 +15,13 @@ class Home extends React.Component {
       user: this.inputUser.current.value,
       password: this.inputPassword.current.value,
     });
+  }
 
-    localStorage.setItem('user', this.inputUser.current.value);
-    localStorage.setItem('password', this.inputPassword.current.value);
+  componentDidMount() {
+    this.setState({
+      user: localStorage.getItem('user'),
+      password: localStorage.getItem('password'),
+    });
   }
 
   render() {
@@ -28,49 +32,46 @@ class Home extends React.Component {
     ) {
       return (
         <div className="main-site">
-          <h1>Bienvenido! {this.state.user}</h1>
+          <h1>Bienvenido {this.state.user}!</h1>
+        </div>
+      );
+    } else {
+      return (
+        <div className="main-site">
+          <h1>Bienvenido!</h1>
+          <Container>
+            <Form>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Nombre de usuario o email: </Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Usuario"
+                  ref={this.inputUser}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Contraseña: </Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Contraseña"
+                  ref={this.inputPassword}
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <Form.Check type="checkbox" label="Recordarme" />
+              </Form.Group>
+              <Button variant="primary" type="button" onClick={this.login}>
+                Login
+              </Button>
+            </Form>
+          </Container>
         </div>
       );
     }
-    return (
-      <div className="main-site">
-        <h1>Bienvenido!</h1>
-        <Container>
-          <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Correo electronico</Form.Label>
-              <Form.Control
-                ref={this.inputUser}
-                type="email"
-                placeholder="Introducir email"
-              />
-
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Contraseña</Form.Label>
-              <Form.Control
-                ref2={this.inputPassword}
-                type="password"
-                placeholder="Contraseña"
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Recordarme" />
-            </Form.Group>
-            <Button variant="primary" type="button" onClick={this.login}>
-              Logearse
-            </Button>
-          </Form>
-        </Container>
-      </div>
-    );
   }
 
-  componentDidUnmount() {
+  componentWillUnmount() {
     localStorage.setItem('user', this.state.user);
     localStorage.setItem('password', this.state.password);
   }
