@@ -8,10 +8,16 @@ export const DatosTablaCubos = [
   {
     Tipos: '3x3',
     Marca: 'Rubik',
+    imagen:
+      'https://ae01.alicdn.com/kf/H9ffce9ea57224637a4f7fc65ae6dbfccl.jpg',
+    descripción: 'Un coche genial',
   },
   {
     Tipos: '3x3',
     Marca: 'Gan ',
+    imagen:
+      'https://ae01.alicdn.com/kf/H9ffce9ea57224637a4f7fc65ae6dbfccl.jpg',
+    descripción: 'Un coche genial',
   },
   {
     Tipos: 'Megaminx',

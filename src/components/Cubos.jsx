@@ -1,10 +1,19 @@
 import React from 'react';
+import uuid from 'react-uuid';
 import { Card, Container, Table, Row, Col } from 'react-bootstrap';
 import { TitulosTablaCubos, DatosTablaCubos } from '../data/DatosCubos';
+
+
 class Cubos extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { selectedItem: DatosTablaCubos[0] };
   }
+
+  changeSelected = (item) => {
+    this.setState({ selectedItem: item });
+  };
+
   render() {
     return (
       <div className="main-site">
@@ -12,7 +21,7 @@ class Cubos extends React.Component {
         <Container>
           <Row>
             <Col lg={8} md={6}>
-              <Table responsive striped>
+              <Table responsive striped hover>
                 <thead>
                   <tr>
                     <th>{TitulosTablaCubos.id}</th>
@@ -24,9 +33,13 @@ class Cubos extends React.Component {
                 <tbody>
                   {DatosTablaCubos.map((item) => {
                     return (
-                      <tr>
-                        <td>{item.Tipos}</td>
+                      <tr
+                        key={uuid()}
+                        onClick={() => this.changeSelected(item)}
+                      >
                         <td>{item.Marca}</td>
+                        <td>{item.Tipo}</td>
+                        <td>{item.Tipos}</td>
 
                       </tr>
                     );
@@ -36,15 +49,13 @@ class Cubos extends React.Component {
             </Col>
             <Col lg={4} md={6}>
               <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={DatosTablaCubos[2].imagen} />
+                <Card.Img variant="top" src={this.state.selectedItem.imagen} />
                 <Card.Body>
-                  <Card.Title>
-                    {DatosTablaCubos[2].marca} {DatosTablaCubos[2].modelo}
-                  </Card.Title>
+                  
                   <Card.Text>
-                    Cubo: {DatosTablaCubos[1].Marca}
+                    {this.state.selectedItem.imagen}
                     <p />
-                    Tipo: {DatosTablaCubos[1].Tipos}
+                    {this.state.selectedItem.descripcion}
                   </Card.Text>
                 </Card.Body>
               </Card>
