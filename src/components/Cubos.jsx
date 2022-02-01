@@ -53,7 +53,7 @@ class Cubos extends React.Component {
                 <Card.Body>
                   
                   <Card.Text>
-                    {this.state.selectedItem.imagen}
+                    {this.state.selectedItem.descripción}
                     <p />
                     {this.state.selectedItem.descripcion}
                   </Card.Text>
